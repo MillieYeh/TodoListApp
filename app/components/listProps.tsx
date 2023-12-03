@@ -6,6 +6,7 @@ interface ListProps {
   handleDelete: any;
   handleEdit: any;
   handleDoneTask: any;
+  updateTodosToShow: any;
   completed: any;
 }
 
