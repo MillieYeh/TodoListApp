@@ -8,6 +8,8 @@ interface ListProps {
   handleDoneTask: any;
   updateTodosToShow: any;
   completed: any;
+  handleDeleteDoneTasks: any;
+  clearList: any;
 }
 
 export default ListProps;

@@ -4,7 +4,7 @@ import TodoItems from "./todoItems";
 import ListProps from "./listProps";
 
 const TodoList = (props: ListProps) => {
-  const { updateTodosToShow } = props;
+  const { updateTodosToShow, handleDeleteDoneTasks, clearList } = props;
   return (
     <>
       <div className='row'>
@@ -45,16 +45,23 @@ const TodoList = (props: ListProps) => {
           handleDoneTask={undefined}
           completed={undefined}
           updateTodosToShow={undefined}
+          handleDeleteDoneTasks={undefined}
+          clearList={undefined}
         />
         <div className='row mt-4 flex'>
           <div className='d-grid gap-2 d-md-flex justify-content-md-end'>
             <button
               type='button'
               className='btn btn-outline-danger mt-1 me-md-2 '
+              onClick={handleDeleteDoneTasks}
             >
               Delete done tasks
             </button>
-            <button type='button' className='btn btn-outline-danger mt-1'>
+            <button
+              type='button'
+              className='btn btn-outline-danger mt-1'
+              onClick={clearList}
+            >
               Delete all tasks
             </button>
           </div>

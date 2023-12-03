@@ -41,6 +41,10 @@ const AddTask = () => {
       return item;
     });
 
+    const clearList = () => {
+      setItems([]);
+    };
+
     setItems(filteredItems);
   };
 
