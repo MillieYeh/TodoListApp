@@ -11,8 +11,11 @@ const TodoItem = (props: ListProps) => {
     <li className='list-group-item d-flex justify-content-between my-2'>
       <h6 className='mt-1 mb-0 align-middle'>{title}</h6>
       <div className='flex gap-1'>
-        <span className='mx-2'>
-          <FaRegSquare />
+        <span
+          className={`mx-2 ${completed ? "text-success" : "text-secondary"}`}
+          onClick={() => handleDoneTask(id)}
+        >
+          {completed ? <FaRegCheckSquare /> : <FaRegSquare />}
         </span>
         <span className='mx-2 text-warning' onClick={handleEdit}>
           <FiEdit2 />
