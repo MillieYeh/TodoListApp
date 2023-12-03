@@ -14,10 +14,10 @@ const TodoItem = (props: ListProps) => {
         <span className='mx-2'>
           <FaRegSquare />
         </span>
-        <span className='mx-2 text-warning'>
+        <span className='mx-2 text-warning' onClick={handleEdit}>
           <FiEdit2 />
         </span>
-        <span className='mx-2 text-danger'>
+        <span className='mx-2 text-danger' onClick={handleDelete}>
           <FiTrash />
         </span>
       </div>
