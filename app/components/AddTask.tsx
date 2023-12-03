@@ -33,6 +33,19 @@ const AddTask = () => {
       setEditItem(false);
     }
   };
+
+  const handleDoneTask = (id: any, completed: any) => {
+    const filteredItems = items.map((item) => {
+      if (item.id === id) {
+        item.completed = !completed;
+      }
+      return item;
+    });
+
+    setItems(filteredItems);
+  };
+
+  
   return (
     <div className='card card-body my-3'>
       <form onSubmit={handleSubmit}>
