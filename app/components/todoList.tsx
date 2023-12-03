@@ -23,7 +23,14 @@ const TodoList = () => {
         </div>
       </div>
       <ul>
-        <TodoItems />
+        <TodoItems
+          id={0}
+          title={""}
+          handleDelete={undefined}
+          handleEdit={undefined}
+          handleDoneTask={undefined}
+          completed={undefined}
+        />
         <div className='row mt-4 flex'>
           <div className='d-grid gap-2 d-md-flex justify-content-md-end'>
             <button
