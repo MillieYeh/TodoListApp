@@ -1,17 +1,21 @@
 "use client";
 import { useState } from "react";
+import { ITask } from "./interface";
 
 export default function Home() {
-  const [todos, setTodos] = useState<any>([]);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [tasks, setTasks] = useState<any>("");
+  const [todoList, setTodoList] = useState<ITask[]>([]);
 
   const handleInputChange = (e: any) => {
-    setInputValue(e.target.value);
+    setTasks(e.target.value);
   };
 
-  const handleAddTodo = () => {
-    setTodos([...todos, inputValue]);
-    setInputValue("");
+  const addTask = (): void => {
+    const newTask = {
+      taskName: tasks,
+    };
+    setTodoList([...todoList, newTask]);
+    setTasks("");
   };
 
   return (
@@ -22,17 +26,18 @@ export default function Home() {
           <input
             className='border border-gray-400 mr-2 px-4 py-2 flex-grow'
             type='text'
+            name='task'
             placeholder=''
-            value={inputValue}
+            value={tasks}
             onChange={handleInputChange}
           />
-          <button className='btn' onClick={handleAddTodo}>
+          <button className='btn' onClick={addTask}>
             Add
           </button>
           <div>
             <ul>
-              {todos.map((todo: any, index: any) => (
-                <li key={index}>{todo}</li>
+              {tasks?.map((task: any, index: any) => (
+                <li key={index}>{task}</li>
               ))}
             </ul>
           </div>
