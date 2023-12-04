@@ -1,19 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const AddTask = () => {
   const [items, setItems] = useState<
     { id: any; title: string; completed: boolean }[]
   >([]);
-  const [item, setItem] = useState("");
+  const [task, setTask] = useState<string>("");
   const [id, setId] = useState(uuidv4());
   const [editItem, setEditItem] = useState(false);
 
-  const handleChange = (e: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setItem(e.target.value);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setTask(e.target.value);
   };
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -21,31 +19,16 @@ const AddTask = () => {
 
     const newItem = {
       id,
-      title: item,
+      title: task,
       completed: false,
     };
 
-    if (item.length > 0) {
+    if (task.length > 0) {
       setItems([...items, newItem]);
       setId(uuidv4());
-      setItem("");
+      setTask("");
       setEditItem(false);
     }
-  };
-
-  const handleDoneTask = (id: any, completed: any) => {
-    const filteredItems = items.map((item) => {
-      if (item.id === id) {
-        item.completed = !completed;
-      }
-      return item;
-    });
-
-    const clearList = () => {
-      setItems([]);
-    };
-
-    setItems(filteredItems);
   };
 
   return (
@@ -55,7 +38,7 @@ const AddTask = () => {
           type='text'
           className='form-control'
           placeholder='New Todo'
-          value={item}
+          value={task}
           onChange={handleChange}
         />
         <button

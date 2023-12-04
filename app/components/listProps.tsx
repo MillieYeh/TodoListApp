@@ -1,15 +1,21 @@
 import { ReactNode } from "react";
 
-interface ListProps {
-  id: number;
-  title: string;
-  handleDelete: any;
-  handleEdit: any;
-  handleDoneTask: any;
+export interface ListProps {
+  items: any;
   updateTodosToShow: any;
-  completed: any;
   handleDeleteDoneTasks: any;
   clearList: any;
+  handleEdit: any;
+  handleDelete: any;
+  handleDoneTask: any;
+  todoitems: ItemsProps[];
 }
 
-export default ListProps;
+export type ItemsProps = {
+  handleEdit: any;
+  handleDelete: any;
+  handleDoneTask: any;
+  completed: any;
+  id: any;
+  title: string;
+};
