@@ -2,21 +2,16 @@
 import { useState } from "react";
 import { ITask } from "./interface";
 import TodoTask from "./components/TodoTask";
+import TodoInput from "./components/TodoInput";
 
 export default function Home() {
-  const [tasks, setTasks] = useState<any>("");
   const [todoList, setTodoList] = useState<ITask[]>([]);
 
-  const handleInputChange = (e: any) => {
-    setTasks(e.target.value);
-  };
-
-  const addTask = (): void => {
+  const addTask = (taskName: string): void => {
     const newTask = {
-      taskName: tasks,
+      taskName: taskName,
     };
     setTodoList([...todoList, newTask]);
-    setTasks("");
   };
 
   return (
@@ -24,17 +19,7 @@ export default function Home() {
       <div className='text-center my-5 flex flex-col gap-4'>
         <h1 className='text-2xl font-bold'>Todo List App</h1>
         <div>
-          <input
-            className='border border-gray-400 mr-2 px-4 py-2 flex-grow'
-            type='text'
-            name='task'
-            placeholder=''
-            value={tasks}
-            onChange={handleInputChange}
-          />
-          <button className='btn' onClick={addTask}>
-            Add Task
-          </button>
+          <TodoInput onAddTask={addTask} />
           <div>
             {todoList?.map((task: ITask, index: any) => {
               return <TodoTask key={index} task={task} />;
