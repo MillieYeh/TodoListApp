@@ -3,13 +3,16 @@ import { ITask } from "../interface";
 import { FiEdit2, FiTrash } from "react-icons/fi";
 import { FaRegSquare, FaRegCheckSquare } from "react-icons/fa";
 
-interface Props {
+interface TaskProps {
   task: ITask;
 }
 
-const TodoTask = ({ task }: Props) => {
+const TodoTask: React.FC<TaskProps> = ({ task }) => {
   return (
-    <li className='list-group-item d-flex justify-content-between my-2'>
+    <li
+      className='list-group-item d-flex justify-content-between my-2'
+      key={task.id}
+    >
       <h6>
         <div>{task.taskName}</div>
       </h6>
