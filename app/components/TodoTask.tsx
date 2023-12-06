@@ -1,13 +1,17 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { ITask } from "../interface";
 import { FiEdit2, FiTrash } from "react-icons/fi";
 import { FaRegSquare, FaRegCheckSquare } from "react-icons/fa";
 
 interface TaskProps {
   task: ITask;
+  handleDelete: () => void;
 }
 
-const TodoTask: React.FC<TaskProps> = ({ task }) => {
+const TodoTask: React.FC<TaskProps> = ({ task, handleDelete }) => {
+  const [editItem, setEditItem] = useState(false);
+
   return (
     <li
       className='list-group-item d-flex justify-content-between my-2'
@@ -23,7 +27,7 @@ const TodoTask: React.FC<TaskProps> = ({ task }) => {
         <span className='mx-2'>
           <FiEdit2 />
         </span>
-        <span className='mx-2'>
+        <span className='mx-2' onClick={handleDelete}>
           <FiTrash />
         </span>
       </div>

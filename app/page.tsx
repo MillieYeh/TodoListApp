@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
 import { ITask } from "./interface";
-import TodoTask from "./components/TodoTask";
 import TodoInput from "./components/TodoInput";
 
 export default function Home() {
   const [todoList, setTodoList] = useState<ITask[]>([]);
 
-  const addTask = (taskName: string): void => {
+  const addTask = (taskName: string, id: any): void => {
     const newTask = {
+      id: id,
       taskName: taskName,
     };
     setTodoList([...todoList, newTask]);
@@ -21,9 +21,7 @@ export default function Home() {
         <div>
           <TodoInput onAddTask={addTask} />
           <div>
-            {todoList?.map((task: ITask, index: any) => {
-              return <TodoTask key={index} task={task} />;
-            })}
+            <TodoList />;
           </div>
         </div>
       </div>

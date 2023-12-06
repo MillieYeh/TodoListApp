@@ -4,15 +4,16 @@ import TodoTask from "./TodoTask";
 
 interface TodoListProps {
   tasks: ITask[];
+  handleDelete: () => void;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
+const TodoList: React.FC<TodoListProps> = ({ tasks, handleDelete }) => {
   return (
     <>
       <h3 className='text-center'>Todo List</h3>
       <ul className='list-group my-5'>
         {tasks.map((task: ITask) => (
-          <TodoTask key={task.id} task={task} />
+          <TodoTask key={task.id} task={task} handleDelete={handleDelete} />
         ))}
         <div className='row mt-4 flex'></div>
       </ul>
